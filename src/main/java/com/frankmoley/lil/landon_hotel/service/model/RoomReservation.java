@@ -7,7 +7,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class RoomRerservation {
+public class RoomReservation {
     private long roomId;
     private String roomName;
     private String roomNumber;
