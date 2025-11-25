@@ -8,19 +8,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-//@Controller
-//@RequestMapping("/welcome")
+@Controller
+@RequestMapping("/welcome")
 public class WelcomeController {
-//
-//    @GetMapping(produces = MediaType.Text_HTML_VALUE)
-//    @ResponseBody
-//    Public String getWelcome(@RequestParam(value="name", required = false) String name) {
-//        String greeting = "Hello ";
-//        if (StringUtils.isNotBlank(name)) {
-//            greeting = greeting + name;
-//        } else {
-//            greeting = greeting + "World";
-//        }
-//        return "<h1>" + greeting + "</h1";
-//    }
+
+    @GetMapping(produces = MediaType.TEXT_HTML_VALUE)
+    @ResponseBody
+    public String getWelcome(@RequestParam(value="name", required = false) String name) {
+        String greeting = "Hello ";
+        if (StringUtils.isNotBlank(name)) {
+            greeting = greeting + name;
+        } else {
+            greeting = greeting + "World";
+        }
+        return "<h1>" + greeting + "</h1>";
+    }
 }
