@@ -7,7 +7,9 @@ import com.frankmoley.lil.landon_hotel.web.exception.BadRequestException;
 import com.frankmoley.lil.landon_hotel.web.exception.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.apache.commons.lang3.StringUtils;  // ← CORRECT! This is Apache Commons
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,7 +24,11 @@ public class ReservationApiController {
     }
 
     @GetMapping
-    public List<Reservation> getAllReservations() {
+    public List<Reservation> getAllReservations(@RequestParam(value="date", required = false)String dateString){
+        if(StringUtils.isNotBlank(dateString)){
+            Date date = new Date(new java.util.Date().getTime());
+            return this.reservationRepository.findAllByReservationDate(date);
+        }
         return this.reservationRepository.findAll();
     }
 
